@@ -1,1 +1,86 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "./shared-style/variables";
+
+.btn {
+  border: none;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+  color: $colortext;
+}
+
+html {
+  font-size: 15px;
+}
+
+body {
+  background: #F9F9F9;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: unset;
+}
+
+a:hover {
+  text-decoration: none;
+  color: $colorAcent;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.btn.btn-success {
+  background: $colorPri;
+}
+
+.btn.btn-success:hover {
+  background: $colorPriHover;
+}
+
+.btn.btn-primary {
+  background: $colorSec;
+}
+
+.btn.btn-primary:hover {
+  background: $colorSecHover;
+}
+
+.dropdown.show .dropdown-menu {
+  display: block;
+  top: 95%;
+}
+
+.dropdown-menu {
+  padding: 10px 15px;
+  border-radius: 20px;
+}
+
+.dropdown-item {
+  border-bottom: 3px solid transparent;
+  padding: 5px;
+}
+
+.dropdown-item:hover {
+  border-bottom: 3px solid $colorAcent;
+  color: $colorAcent;
+  background: unset;
+}
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 14px;
+  }
+}

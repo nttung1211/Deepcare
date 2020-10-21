@@ -4,11 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
+import { LandingComponent } from './landing/landing.component';
+import {DropdownDirective} from './shared/Dropdown.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    LandingComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,

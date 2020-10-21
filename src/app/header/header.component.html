@@ -1,1 +1,72 @@
-<p>header works!</p>
+<!--<nav class='pt-3 bg-white shadow-small'>-->
+<!--  <div class='container'>-->
+<!--    <div class='upper-bar d-flex justify-content-between'>-->
+<!--      <div class='left'>-->
+<!--        <a href='/'><img src='../../assets/images/logo/logo.png' alt='logo' class='logo'></a>-->
+
+<!--      </div>-->
+<!--      <div class='right d-flex align-items-center'>-->
+<!--        <form class='search-bar'>-->
+<!--          <input type='text' class='search-input form-control' placeholder='Tìm kiếm'>-->
+<!--          <button class='search-btn'><i class="fas fa-search"></i></button>-->
+<!--        </form>-->
+<!--        <a class='btn btn-success text-capitalize rounded-pill d-block mr-3 px-4'>đặt lịch khám</a>-->
+<!--        <a href='#' class='text-capitalize d-block'>đăng kí</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <ul class='lower-bar d-flex align-items-center'>-->
+<!--      <li><a class='lower-bar-item first active' href='#'><i class="fas fa-home px-2"></i></a></li>-->
+<!--      <li><a class='lower-bar-item' href='#'>dịch vụ y tế</a></li>-->
+<!--      <li><a class='lower-bar-item' href='#'>sản phẩm sức khoẻ</a></li>-->
+<!--      <li><a class='lower-bar-item' href='#'>hướng dẫn giải đáp</a></li>-->
+<!--      <li><a class='lower-bar-item' href='#'>tin tức y khoa</a></li>-->
+<!--      <li><a class='lower-bar-item' href='#'>giới thiệu</a></li>-->
+<!--      <li><a class='btn btn-primary text-capitalize rounded-pill d-block ml-3 px-4'>Tải phần mềm</a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</nav>-->
+
+<nav class='bg-white'>
+  <div class='container'>
+      <i (click)='openNav()' class="fas fa-bars"></i>
+      <div class='navi-item'><a class='logo' href='/'><img src='../../assets/images/logo/logo.png' alt='logo'></a></div>
+  </div>
+  <div class='navi-collapse' [ngClass]="{'show': navOpen}">
+    <div class='container'>
+      <i (click)='closeNav()' class="fas fa-times"></i>
+      <div class='upper-nav'>
+          <div class='navi-item'><a class='btn btn-success text-capitalize rounded-pill d-block px-4'>đặt lịch khám</a></div>
+          <div class='navi-item'><a class='btn btn-primary text-capitalize rounded-pill d-block px-4'>Tải ứng dụng</a></div>
+          <div class='navi-item'><a class='text-capitalize d-block' href='#'>đăng kí</a></div>
+      </div>
+
+      <div class='lower-nav'>
+        <div class='navi-item'><a (click)='highlightActive($event)' class='page home active' href='#'><i class="fas fa-home"></i></a></div>
+        <div class='navi-item dropdown' appDropdown>
+          <a (click)='highlightActive($event)' class='page' href='#'>dịch vụ y tế</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Đặt khám tại nhà</a>
+            <a class="dropdown-item" href="#">Đặt khám tại bệnh viện/phòng khám</a>
+            <a class="dropdown-item" href="#">Đặt lịch khám bệnh trực tuyến</a>
+            <a class="dropdown-item" href="#">Theo dõi sổ khám bệnh điện tử</a>
+          </div>
+        </div>
+        <div class='navi-item'><a (click)='highlightActive($event)' class='page' href='#'>sản phẩm sức khoẻ</a></div>
+        <div class='navi-item dropdown' appDropdown>
+          <a (click)='highlightActive($event)' class='page' href='#'>hướng dẫn giải đáp</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Hướng dẫn tính năng</a>
+            <a class="dropdown-item" href="#">Câu hỏi thường gặp</a>
+          </div>
+        </div>
+        <div class='navi-item'><a (click)='highlightActive($event)' class='page' href='#'>tin tức y khoa</a></div>
+        <div class='navi-item'><a (click)='highlightActive($event)' class='page' href='#'>giới thiệu</a></div>
+        <form class='search-bar navi-item'>
+          <input type='text' class='search-input form-control' placeholder='Tìm kiếm'>
+          <button class='search-btn'><i class="fas fa-search"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
