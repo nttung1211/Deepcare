@@ -1,0 +1,26 @@
+@import "../../shared-style/variables";
+
+.feature-title {
+  font-size: 2.5rem;
+  font-weight: 100;
+  letter-spacing: 2px;
+  color: #111D63;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.feature-title::after {
+  content: '';
+  display: block;
+  height: 8px;
+  border-radius: 5px;
+  width: 80px;
+  background: $colorSec;
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+}
+
+.feature-content {
+  letter-spacing: .5px;
+}

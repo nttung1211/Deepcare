@@ -1,81 +1,9 @@
 @import "../../shared-style/variables";
 
 
-//nav {
-//  .logo {
-//    width: 250px
-//  }
-//  box-shadow: 0 1px 5px rgba(0,0,0,0.05);
-//
-//  .upper-bar {
-//    .search-bar {
-//      display: block;
-//      border-radius: 20px;
-//      margin-right: 10px;
-//      padding: 0 10px 0 15px;
-//      border: 1px solid rgba(0, 0, 0, .2);
-//
-//      .search-btn {
-//        background: unset;
-//        border: unset;
-//      }
-//      .search-input {
-//        height: 33px;
-//        padding: 0;
-//        display: inline-block;
-//        width: 200px;
-//        border: none;
-//        &:focus {
-//          box-shadow: none;
-//          -webkit-box-shadow: none;
-//        }
-//      }
-//    }
-//  }
-//
-//  .lower-bar {
-//    li:nth-child(1) .lower-bar-item {
-//      padding: 17px 0;
-//    }
-//
-//    li {
-//      .lower-bar-item {
-//        .fa-home {
-//          font-size: 1.7rem;
-//        }
-//        display: block;
-//        margin: 5px 10px 0 10px;
-//        padding: 20px 0;
-//        text-transform: uppercase;
-//        position: relative;
-//
-//        &.active, &.active .fa-home,
-//        .fa-home:hover {
-//          color: $colorAcent;
-//        }
-//
-//        &::after {
-//          content: '';
-//          display: block;
-//          position: absolute;
-//          bottom: 0;
-//          left: 10px;
-//          right: 10px;
-//          height: 4px;
-//          border-radius: 4px 4px 0 0;
-//          background: $colorAcent;
-//          transform: scale(0, 1);
-//          transition: transform .1s;
-//        }
-//
-//        &.active::after,
-//        &:hover::after {
-//          transform: scale(1, 1);
-//        }
-//      }
-//    }
-//  }
-//}
+header {
+  display: initial;
+}
 
 nav {
   box-shadow: 0 1px 5px rgba(0,0,0,0.05);
@@ -160,6 +88,7 @@ nav {
         padding: 12px 0;
         text-transform: uppercase;
         position: relative;
+        font-weight: bold;
 
         &.home {
           padding: 9px 0;
