@@ -12,7 +12,7 @@ export class DoctorsComponent implements OnInit {
   slide(toLeft: boolean = true) {
     const doctors = document.querySelector('.doctors');
     doctors.scrollBy({
-      left: toLeft ? -300 : 300,
+      left: toLeft ? -370 : 370,
       behavior: 'smooth'
     });
   }

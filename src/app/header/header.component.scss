@@ -1,15 +1,13 @@
 @import "../../shared-style/variables";
 
 
-header {
-  display: initial;
-}
 
 nav {
   box-shadow: 0 1px 5px rgba(0,0,0,0.05);
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   z-index: 8;
   padding-top: 17px;
 
@@ -38,7 +36,7 @@ nav {
       align-items: center;
 
       .navi-item .btn {
-        margin-right: 20px;
+        margin-left: 20px;
       }
     }
 
@@ -90,13 +88,13 @@ nav {
         position: relative;
         font-weight: bold;
 
-        &.home {
-          padding: 9px 0;
-          .fa-home {
-            font-size: 1.7rem;
-            padding: 0 5px;
-          }
-        }
+        // &.home {
+        //   padding: 9px 0;
+        //   .fa-home {
+        //     font-size: 1.7rem;
+        //     padding: 0 5px;
+        //   }
+        // }
 
         &.active, &.active .fa-home,
         .fa-home:hover {
@@ -173,4 +171,16 @@ nav {
     }
   }
 }
+
+.navbar-offset {
+  padding: 58px;
+}
+
+@media (max-width: 992px) {
+  .navbar-offset {
+    padding: 25px;
+  }
+
+}
+
 

@@ -1,10 +1,12 @@
 <app-header></app-header>
 
-<app-landing></app-landing>
-<app-features></app-features>
-<app-doctors></app-doctors>
-<app-news></app-news>
-<app-partners></app-partners>
+<div class='router-outlet'>
+  <router-outlet></router-outlet>
+</div>
 
 <app-download-app></app-download-app>
 <app-footer></app-footer>
+
+
+<app-service-form-modal *ngIf="modalOpen" [title]="modalTitle"></app-service-form-modal>
+

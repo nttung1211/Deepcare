@@ -1,0 +1,18 @@
+@import '../../../shared-style/variables.scss';
+
+input.form-control {
+  border-radius: 20px !important;
+  padding: 20px;
+}
+
+.btn {
+  padding: 10px;
+}
+
+.fa-times {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+}

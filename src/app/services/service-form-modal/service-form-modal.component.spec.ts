@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewsPostsComponent } from './news.component';
+import { ServiceFormModalComponent } from './service-form-modal.component';
 
-describe('NewsPostsComponent', () => {
-  let component: NewsPostsComponent;
-  let fixture: ComponentFixture<NewsPostsComponent>;
+describe('ServiceFormModalComponent', () => {
+  let component: ServiceFormModalComponent;
+  let fixture: ComponentFixture<ServiceFormModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewsPostsComponent ]
+      declarations: [ ServiceFormModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewsPostsComponent);
+    fixture = TestBed.createComponent(ServiceFormModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,45 +1,48 @@
-<header>
-  <nav class='bg-white'>
-    <div class='container'>
-        <i (click)='openNav()' class="fas fa-bars"></i>
-        <div class='navi-item'><a class='logo' href='/'><img src='../../assets/images/logo/logo.png' alt='logo'></a></div>
+<nav class='bg-white'>
+  <div class='container'>
+    <i (click)='openNav()' class="fas fa-bars"></i>
+    <div class='navi-item'><a class='logo' routerLink='/'><img src='../../assets/images/logo/logo.png' alt='logo'></a>
     </div>
-    <div class='navi-collapse' [ngClass]="{'show': navOpen}">
-      <div class='container'>
-        <i (click)='closeNav()' class="fas fa-times"></i>
-        <div class='upper-nav'>
-            <div class='navi-item'><a class='btn btn-success text-capitalize d-block'>đặt lịch khám</a></div>
-            <div class='navi-item'><a class='btn btn-primary text-capitalize d-block'>Tải ứng dụng</a></div>
-            <div class='navi-item'><a class='text-capitalize d-block' href='#'>đăng kí</a></div>
-        </div>
+  </div>
+  <div class='navi-collapse' [ngClass]="{'show': navOpen}">
+    <div class='container'>
+      <i (click)='closeNav()' class="fas fa-times"></i>
+      <div class='upper-nav'>
+        <div class='navi-item' (click)="toggleFormModal()"><a class='btn btn-success text-capitalize d-block'>đặt lịch khám</a></div>
+        <div class='navi-item'><a class='btn btn-primary text-capitalize d-block'>Tải ứng dụng</a></div>
+      </div>
 
-        <div class='lower-nav'>
-          <div class='navi-item'><a (click)='highlightActive($event)' class='page home active' href='#'><i class="fas fa-home"></i></a></div>
-          <div class='navi-item dropdown' appDropdown>
-            <a (click)='highlightActive($event)' class='page' href='#'>dịch vụ y tế</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Đặt khám tại nhà</a>
-              <a class="dropdown-item" href="#">Đặt khám tại bệnh viện/phòng khám</a>
-              <a class="dropdown-item" href="#">Đặt lịch khám bệnh trực tuyến</a>
-              <a class="dropdown-item" href="#">Theo dõi sổ khám bệnh điện tử</a>
-            </div>
-          </div>
-          <div class='navi-item'><a (click)='highlightActive($event)' class='page' href='#'>sản phẩm sức khoẻ</a></div>
-          <div class='navi-item dropdown' appDropdown>
-            <a (click)='highlightActive($event)' class='page' href='#'>hướng dẫn giải đáp</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Hướng dẫn tính năng</a>
-              <a class="dropdown-item" href="#">Câu hỏi thường gặp</a>
-            </div>
-          </div>
-          <div class='navi-item'><a (click)='highlightActive($event)' class='page' href='#'>tin tức y khoa</a></div>
-          <div class='navi-item'><a (click)='highlightActive($event)' class='page' href='#'>giới thiệu</a></div>
-          <form class='search-bar navi-item'>
-            <input type='text' class='search-input form-control' placeholder='Tìm kiếm'>
-            <button class='search-btn'><i class="fas fa-search"></i></button>
-          </form>
+      <div class='lower-nav'>
+        <div class='navi-item'>
+          <a class='page home' routerLink='/' [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">
+            Trang chủ
+          </a>
         </div>
+        <div class='navi-item dropdown' appDropdown>
+          <a routerLinkActive="active" class='page' href='#'>dịch vụ</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Đặt khám tại nhà</a>
+            <a class="dropdown-item" href="#">Đặt khám tại bệnh viện/phòng khám</a>
+            <a class="dropdown-item" href="#">Đặt lịch khám bệnh trực tuyến</a>
+            <a class="dropdown-item" href="#">Theo dõi sổ khám bệnh điện tử</a>
+          </div>
+        </div>
+        <div class='navi-item'><a class='page' href='#'>sản phẩm sức khoẻ</a></div>
+        <div class='navi-item dropdown' appDropdown>
+          <a routerLinkActive="active" class='page' href='#'>hướng dẫn</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Hướng dẫn tính năng</a>
+            <a class="dropdown-item" href="#">Câu hỏi thường gặp</a>
+          </div>
+        </div>
+        <div class='navi-item'><a routerLinkActive="active" class='page' [routerLink]="['/news']">tin tức</a></div>
+        <div class='navi-item'><a routerLinkActive="active" class='page' href='#'>giới thiệu</a></div>
+        <form class='search-bar navi-item'>
+          <input type='text' class='search-input form-control' placeholder='Tìm kiếm'>
+          <button class='search-btn'><i class="fas fa-search"></i></button>
+        </form>
       </div>
     </div>
-  </nav>
-</header>
+  </div>
+</nav>
+<div class='navbar-offset'></div>

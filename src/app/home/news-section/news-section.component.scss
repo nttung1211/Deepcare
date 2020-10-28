@@ -1,0 +1,21 @@
+@import '../../../shared-style/variables.scss';
+
+.news-section {
+  background: #fff;
+
+  .card {
+    border: none;
+
+    &:hover .card-title {
+      color: $colorAcent;
+    }
+  }
+}
+
+.horizontal-card-image {
+  height: 100%;
+}
+
+.more {
+  margin-top: 40px;
+}

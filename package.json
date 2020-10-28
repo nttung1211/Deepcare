@@ -23,6 +23,9 @@
     "animate.css": "^4.1.1",
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
+    "ngx-markdown": "^10.1.1",
+    "ngx-pagination": "^5.0.0",
+    "ngx-spinner": "^10.0.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
