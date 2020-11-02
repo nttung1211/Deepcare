@@ -23,7 +23,6 @@ export class HomeFeaturesComponent implements OnInit, OnDestroy {
     this.featuresSubscription = this.homeService.getFeatures().subscribe(
       (features: Post[]) => {
         this.features = features;
-        console.log(this.features);
       }
     );
   }
