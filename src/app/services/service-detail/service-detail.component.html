@@ -1,0 +1,31 @@
+<div *ngIf="service" class='container-fluid'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col post' id='post'>
+        <h1 class='post-title'>
+          {{service.title}}
+        </h1>
+        <div class='post-subtitle text-italic'>
+          {{service.subtitle}}
+        </div>
+
+        <div class="text-center my-3">
+          <a class='btn btn-success py-3 px-5' (click)="toggleFormModal()">ĐẶT LỊCH NGAY</a>
+        </div>
+
+        <div class='post-cover-image'>
+          <img [src]="service.image.formats.large.url" alt='cover image'>
+        </div>
+        <markdown class='post-content'>
+          {{service.content}}
+        </markdown>
+
+        <div class="text-center my-3">
+          <a class='btn btn-success py-3 px-5' (click)="toggleFormModal()">ĐẶT LỊCH NGAY</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ngx-spinner></ngx-spinner>

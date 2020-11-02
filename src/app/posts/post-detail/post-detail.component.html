@@ -1,0 +1,38 @@
+<div *ngIf="post" class='container'>
+  <div class='row'>
+    <div class='col post' id='post'>
+      <h1 class='post-title'>
+        {{post.title}}
+      </h1>
+      <div class='post-subtitle text-italic'>
+        {{post.subtitle}}
+      </div>
+      <div class='post-cover-image'>
+        <img [src]="post.image.url" alt='cover image'>
+      </div>
+      <div [innerHTML]="post.content | markdown" class='post-content'></div>
+      <!-- the tag <markdown> does not work properly -->
+    </div>
+  </div>
+
+  <h1 class="text-center py-5">NHỮNG BÀI VIẾT LIÊN QUAN</h1>
+  <div class='row'>
+    <div class='col-md-4' *ngFor="let p of relatedPosts">
+      <div class="card">
+        <img [src]="p.image.url" class="card-img-top" alt="image">
+        <div class="card-body">
+          <h3 class="card-title">{{p.title}}</h3>
+          <p class="card-text">{{p.subtitle}}</p>
+          <a [routerLink]="['..', p.id]" class="stretched-link">Đọc chi tiết >></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="more py-4"><a [routerLink]="['..']">Xem thêm >></a></p>
+  
+</div>
+
+
+
+<ngx-spinner></ngx-spinner>

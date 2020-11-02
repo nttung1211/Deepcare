@@ -12,10 +12,34 @@ app-service-form-modal {
   background: #fff;
   box-shadow: 0 0 10px rgba($color: #000000, $alpha: .5);
   padding: 50px 30px;
-  border-radius: 10px;
+  border-radius: 1rem;
+  animation: modalDown;
+  animation-duration: .5s;
+}
+
+@keyframes modalDown {
+  from {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
 }
 
 @media (max-width: 575.98px) { 
+  @keyframes modalDown {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+
   app-service-form-modal {
     width: auto;
     top: 0;
@@ -44,4 +68,8 @@ app-service-form-modal {
 }
 .my-overlay i.fa.fa-spinner.fa-spin, .spinner-big {
   font-size: 100px !important;
+}
+
+.modal-wrapper {
+  opacity: 0;
 }

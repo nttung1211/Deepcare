@@ -1,20 +1,16 @@
-<!-- <div class='container'>
+<div class='container'>
   <div class='row'>
-    <div class='col-md-6' *ngFor="let ser of services | paginate: { itemsPerPage: 6, currentPage: page }">
+    <div class='col-md-6 py-3' *ngFor="let ser of services">
       <div class="card">
-        <img [src]="ser.thumbnail.url" class="card-img-top" alt="...">
+        <img [src]="ser.image.formats.small.url" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">{{ser.title}}</h5>
+          <h3 class="card-title">{{ser.title}}</h3>
           <p class="card-text">{{ser.subtitle}}</p>
-          <a [routerLink]="ser.id" class="stretched-link">Đọc chi tiết >></a>
+          <a [routerLink]="[ser.id]" class="stretched-link">Đọc chi tiết >></a>
         </div>
       </div>
     </div>
   </div>
-
-  <div class='pagination-control py-5'>
-    <pagination-controls (pageChange)="page = $event"></pagination-controls>
-  </div>
 </div>
 
-<ngx-spinner></ngx-spinner> -->
+<ngx-spinner></ngx-spinner>

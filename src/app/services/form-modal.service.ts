@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+
+export class FormData {
+  public title: string;
+  public serviceId: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormModalService {
-  formModalToggled = new Subject();
+  formModalToggled = new BehaviorSubject<FormData>(null);
 }

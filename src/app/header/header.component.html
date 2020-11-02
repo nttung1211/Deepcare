@@ -8,8 +8,9 @@
     <div class='container'>
       <i (click)='closeNav()' class="fas fa-times"></i>
       <div class='upper-nav'>
-        <div class='navi-item' (click)="toggleFormModal()"><a class='btn btn-success text-capitalize d-block'>đặt lịch khám</a></div>
-        <div class='navi-item'><a class='btn btn-primary text-capitalize d-block'>Tải ứng dụng</a></div>
+        <div class='navi-item' (click)="toggleFormModal()"><a class='btn btn-success text-capitalize d-block'>đặt lịch
+            khám</a></div>
+        <div class='navi-item'><a class='btn btn-primary text-capitalize d-block' appReachTo='.download-app-section'>Tải ứng dụng</a></div>
       </div>
 
       <div class='lower-nav'>
@@ -19,24 +20,33 @@
           </a>
         </div>
         <div class='navi-item dropdown' appDropdown>
-          <a routerLinkActive="active" class='page' href='#'>dịch vụ</a>
+          <a routerLinkActive="active" class='page' [routerLink]="['/services']">dịch vụ</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Đặt khám tại nhà</a>
-            <a class="dropdown-item" href="#">Đặt khám tại bệnh viện/phòng khám</a>
-            <a class="dropdown-item" href="#">Đặt lịch khám bệnh trực tuyến</a>
-            <a class="dropdown-item" href="#">Theo dõi sổ khám bệnh điện tử</a>
+            <a class="dropdown-item" *ngFor="let ser of services" [routerLink]="['/services', ser.id]">{{ser.title}}</a>
           </div>
         </div>
-        <div class='navi-item'><a class='page' href='#'>sản phẩm sức khoẻ</a></div>
+        <div class='navi-item'><a class='page' [routerLink]="['/products']">sản phẩm sức khoẻ</a></div>
         <div class='navi-item dropdown' appDropdown>
-          <a routerLinkActive="active" class='page' href='#'>hướng dẫn</a>
+          <a routerLinkActive="active" [routerLink]="['/instruction']" class='page'>hướng dẫn</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Hướng dẫn tính năng</a>
-            <a class="dropdown-item" href="#">Câu hỏi thường gặp</a>
+            <a class="dropdown-item" [routerLink]="['/instruction/features']">Hướng dẫn tính năng</a>
+            <a class="dropdown-item" [routerLink]="['/instruction/qna']">Câu hỏi thường gặp</a>
+          </div>
+        </div>
+        <div class='navi-item dropdown' appDropdown>
+          <a routerLinkActive="active" [routerLink]="['/partners']" class='page'>đối tác</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" [routerLink]="['/partners/companies']">Đơn vị nổi bật</a>
+            <a class="dropdown-item" [routerLink]="['/partners/doctors']">Bác sĩ nổi bật</a>
           </div>
         </div>
         <div class='navi-item'><a routerLinkActive="active" class='page' [routerLink]="['/news']">tin tức</a></div>
-        <div class='navi-item'><a routerLinkActive="active" class='page' href='#'>giới thiệu</a></div>
+        <div class='navi-item dropdown' appDropdown>
+          <a routerLinkActive="active" class='page' [routerLink]="['/introduction']">giới thiệu</a>
+          <div class="dropdown-menu">
+            <a *ngFor="let introPost of introPosts" class="dropdown-item" [routerLink]="['/introduction', introPost.id]">{{introPost.title}}</a>
+          </div>
+        </div>
         <form class='search-bar navi-item'>
           <input type='text' class='search-input form-control' placeholder='Tìm kiếm'>
           <button class='search-btn'><i class="fas fa-search"></i></button>

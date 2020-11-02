@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header [services]="services"></app-header>
 
 <div class='router-outlet'>
   <router-outlet></router-outlet>
@@ -8,5 +8,5 @@
 <app-footer></app-footer>
 
 
-<app-service-form-modal *ngIf="modalOpen" [title]="modalTitle"></app-service-form-modal>
+<app-service-form-modal *ngIf="modalOpen"></app-service-form-modal>
 
