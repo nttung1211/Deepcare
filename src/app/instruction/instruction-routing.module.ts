@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PostDetailComponent } from '../posts/post-detail/post-detail.component';
+import { FeatureDetailComponent } from './features/feature-detail/feature-detail.component';
 import { FeaturesComponent } from './features/features.component';
+import { QnaDetailComponent } from './qna/qna-detail/qna-detail.component';
 import { QnaComponent } from './qna/qna.component';
 
 
@@ -19,7 +20,7 @@ const routes: Routes = [
 
   {
     path: 'features/:id',
-    component: PostDetailComponent
+    component: FeatureDetailComponent
   },
 
   {
@@ -29,7 +30,7 @@ const routes: Routes = [
 
   {
     path: 'qna/:id',
-    component: PostDetailComponent
+    component: QnaDetailComponent
   }
 ];
 

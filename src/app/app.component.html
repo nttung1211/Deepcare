@@ -1,4 +1,4 @@
-<app-header [services]="services"></app-header>
+<app-header [services]="services" [introPosts]="introPosts"></app-header>
 
 <div class='router-outlet'>
   <router-outlet></router-outlet>
@@ -9,4 +9,5 @@
 
 
 <app-service-form-modal *ngIf="modalOpen"></app-service-form-modal>
+<app-flash *ngIf="flashOpen" [message]='flashMessage' [type]='flashType'></app-flash>
 

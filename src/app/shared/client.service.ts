@@ -20,4 +20,6 @@ export class ClientService {
         data
       );
   }
+
+  //TODO: create CLient model, add post method to data.service, delete this file
 }

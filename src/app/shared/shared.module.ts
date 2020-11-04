@@ -10,6 +10,7 @@ import { PostsComponent } from '../posts/posts.component';
 import { PostDetailComponent } from '../posts/post-detail/post-detail.component';
 import { RouterModule } from '@angular/router';
 import { ReachToDirective } from './reach-to.directive';
+import { FlashComponent } from './flash/flash.component';
 
 
 
@@ -19,7 +20,8 @@ import { ReachToDirective } from './reach-to.directive';
     RevealAnimateDirective,
     PostsComponent,
     PostDetailComponent,
-    ReachToDirective
+    ReachToDirective,
+    FlashComponent
   ],
   imports: [
     RouterModule,
@@ -34,6 +36,7 @@ import { ReachToDirective } from './reach-to.directive';
     // COMPONENTS
     PostsComponent,
     PostDetailComponent,
+    FlashComponent,
     // MODULES
     CommonModule,
     MarkdownModule,

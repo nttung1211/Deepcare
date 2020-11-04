@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
-import { HelpersService} from '../shared/helpers.service';
-import { Post, PostService } from '../shared/post.service';
-import { Size } from '../shared/Size';
+import { DataService } from '../shared/data.service';
+import { HelpersService } from '../shared/helpers.service';
+import { Size } from '../shared/Size.enum';
+import { Post } from './Post.model';
 
 @Component({
   selector: 'app-posts',
@@ -12,28 +13,35 @@ import { Size } from '../shared/Size';
 })
 export class PostsComponent implements OnInit {
   private subscription: Subscription;
-  @Input('queryString') queryString = '';
+  @Input() queryString: string;
+  @Input() storage: string;
   posts = [];
   page = 1;
 
   constructor(
-    private postSevice: PostService,
+    private dataSevice: DataService<Post>,
     private spinner: NgxSpinnerService,
     private helpers: HelpersService
-    ) {
-  }
+  ) { }
 
   ngOnInit(): void {
-    this.spinner.show();
-    this.subscription = this.postSevice.find(this.queryString).subscribe((posts: Post[]) => {
-      this.posts = posts.map(post => {
-        post.subtitle = this.helpers.shortenString(post.subtitle, 100);
-        post.image.url = this.helpers.getRelevantSize(post, Size.Small);
-        return post;
+    if (!this.dataSevice.data[this.storage].length) {
+      this.spinner.show();
+      this.dataSevice.table = 'posts';
+      this.subscription = this.dataSevice.find(this.queryString).subscribe((posts: Post[]) => {
+        posts = posts.map(post => {
+          post.subtitle = this.helpers.shortenString(post.subtitle, 100);
+          post.image.url = this.helpers.getRelevantSize(post.image, Size.Medium);
+          return post;
+        });
+
+        this.dataSevice.data[this.storage] = posts;
+        this.posts = this.dataSevice.data[this.storage];
+        this.spinner.hide();
       });
-      
-      this.spinner.hide();
-    });
+    } else {
+      this.posts = this.dataSevice.data[this.storage];
+    }
   }
 
   onPageChange(e: any) {
@@ -42,7 +50,7 @@ export class PostsComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    if (this.subscription){
+    if (this.subscription) {
       this.subscription.unsubscribe();
     }
   }

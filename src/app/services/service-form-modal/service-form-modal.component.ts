@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { ClientService } from 'src/app/shared/client.service';
+import { Client } from 'src/app/shared/Client.model';
+import { DataService } from 'src/app/shared/data.service';
+import { SubjectsService } from 'src/app/shared/subjects.service';
 import { FormData, FormModalService } from '../form-modal.service';
 
 @Component({
@@ -17,7 +19,8 @@ export class ServiceFormModalComponent implements OnInit, OnDestroy {
   
   constructor(
     private formModalService: FormModalService,
-    private clientService: ClientService
+    private dataService: DataService<Client>,
+    private subjectsService: SubjectsService
   ) {}
 
   ngOnInit(): void {
@@ -42,18 +45,26 @@ export class ServiceFormModalComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     const data = this.serviceForm.value;
-    this.clientService.post({
+    this.dataService.table = 'clients';
+    this.dataService.create({
       fullname : data.fullname,
       phone: data.phone,
       message: data.message,
       service: this.serviceId
     }).subscribe(
-      response => {
-        console.log(response);
+      res => {
+        this.subjectsService.flash.next({
+          message: 'Nhân viên Deepcare sẽ liên lạc với bạn sớm nhất có thể. Xin cảm ơn bạn đã lựa chọn dịch vụ của chúng tôi.',
+          type: 'success'
+        });
         this.formModalService.formModalToggled.next(null);
       },
-      error => {
-        console.log(error);
+      err => {
+        console.log(err);
+        this.subjectsService.flash.next({
+          message: 'Không thể gửi được thông tin. Xin vui lòng thử lại',
+          type: 'warning'
+        });
         this.formModalService.formModalToggled.next(null);
       }
     );

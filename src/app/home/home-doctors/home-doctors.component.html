@@ -4,170 +4,30 @@
     <i class="fas fa-chevron-left" (click)="slide()"></i>
     <i class="fas fa-chevron-right" (click)="slide(false)"></i>
 
-    <a href='#' class='bg-white card-item doctor'>
+    <a *ngFor="let doctor of doctors" class='bg-white card-item doctor' [routerLink]="['/doctors', doctor.id]">
       <div class='doctor-img'>
         <img src='../../assets/images/doctors/doctor.png' alt='doctor'>
       </div>
       <div class='p-4'>
-        <h4>Bs.Nguyễn Thanh Tùng</h4>
+        <h4>{{doctor.fullname}}</h4>
         <div class='text-muted doctor-info'>
           <i class="doctor-info-icon fas fa-venus-mars"></i>
-          <span>Nam</span>
+          <span>{{doctor.gender}}</span>
         </div>
 
         <div class='text-muted doctor-info'>
           <i class="doctor-info-icon fas fa-user-md"></i>
-          <span>Phó giáo sư, tiến sĩ</span>
+          <span>{{doctor.qualifications}}</span>
         </div>
 
         <div class='text-muted doctor-info'>
           <i class="doctor-info-icon fas fa-clinic-medical"></i>
-          <span>Tiêu hoá</span>
+          <span>{{doctor.faculty}}</span>
         </div>
 
         <div class='text-muted doctor-info'>
           <i class="doctor-info-icon fas fa-map-marker-alt"></i>
-          <span>Bệnh viện Việt Đức</span>
-        </div>
-      </div>
-    </a>
-
-    <a href='#' class='bg-white card-item doctor'>
-      <div class='doctor-img'>
-        <img src='../../assets/images/doctors/doctor.png' alt='doctor'>
-      </div>
-      <div class='p-4'>
-        <h4>Bs.Nguyễn Thanh Tùng</h4>
-        <div class='text-muted doctor-info'>
-          <i class="doctor-info-icon fas fa-venus-mars"></i>
-          <span>Nam</span>
-        </div>
-
-        <div class='text-muted doctor-info'>
-          <i class="doctor-info-icon fas fa-user-md"></i>
-          <span>Phó giáo sư, tiến sĩ</span>
-        </div>
-
-        <div class='text-muted doctor-info'>
-          <i class="doctor-info-icon fas fa-clinic-medical"></i>
-          <span>Tiêu hoá</span>
-        </div>
-
-        <div class='text-muted doctor-info'>
-          <i class="doctor-info-icon fas fa-map-marker-alt"></i>
-          <span>Bệnh viện Việt Đức</span>
-        </div>
-      </div>
-    </a>
-
-    <a href='#' class='bg-white card-item doctor'>
-      <div class='doctor-img'>
-        <img src='../../assets/images/doctors/doctor.png' alt='doctor'>
-      </div>
-      <div class='p-4'>
-        <h4>Bs.Nguyễn Thanh Tùng</h4>
-        <div class='text-muted doctor-info'>
-          <i class="doctor-info-icon fas fa-venus-mars"></i>
-          <span>Nam</span>
-        </div>
-
-        <div class='text-muted doctor-info'>
-          <i class="doctor-info-icon fas fa-user-md"></i>
-          <span>Phó giáo sư, tiến sĩ</span>
-        </div>
-
-        <div class='text-muted doctor-info'>
-          <i class="doctor-info-icon fas fa-clinic-medical"></i>
-          <span>Tiêu hoá</span>
-        </div>
-
-        <div class='text-muted doctor-info'>
-          <i class="doctor-info-icon fas fa-map-marker-alt"></i>
-          <span>Bệnh viện Việt Đức</span>
-        </div>
-      </div>
-    </a>
-
-    <a href='#' class='bg-white card-item doctor'>
-      <div class='doctor-img'>
-        <img src='../../assets/images/doctors/doctor.png' alt='doctor'>
-      </div>
-      <div class='p-4'>
-        <h4>Bs.Nguyễn Thanh Tùng</h4>
-        <div class='text-muted doctor-info'>
-          <i class="doctor-info-icon fas fa-venus-mars"></i>
-          <span>Nam</span>
-        </div>
-
-        <div class='text-muted doctor-info'>
-          <i class="doctor-info-icon fas fa-user-md"></i>
-          <span>Phó giáo sư, tiến sĩ</span>
-        </div>
-
-        <div class='text-muted doctor-info'>
-          <i class="doctor-info-icon fas fa-clinic-medical"></i>
-          <span>Tiêu hoá</span>
-        </div>
-
-        <div class='text-muted doctor-info'>
-          <i class="doctor-info-icon fas fa-map-marker-alt"></i>
-          <span>Bệnh viện Việt Đức</span>
-        </div>
-      </div>
-    </a>
-
-    <a href='#' class='bg-white card-item doctor'>
-      <div class='doctor-img'>
-        <img src='../../assets/images/doctors/doctor.png' alt='doctor'>
-      </div>
-      <div class='p-4'>
-        <h4>Bs.Nguyễn Thanh Tùng</h4>
-        <div class='text-muted doctor-info'>
-          <i class="doctor-info-icon fas fa-venus-mars"></i>
-          <span>Nam</span>
-        </div>
-
-        <div class='text-muted doctor-info'>
-          <i class="doctor-info-icon fas fa-user-md"></i>
-          <span>Phó giáo sư, tiến sĩ</span>
-        </div>
-
-        <div class='text-muted doctor-info'>
-          <i class="doctor-info-icon fas fa-clinic-medical"></i>
-          <span>Tiêu hoá</span>
-        </div>
-
-        <div class='text-muted doctor-info'>
-          <i class="doctor-info-icon fas fa-map-marker-alt"></i>
-          <span>Bệnh viện Việt Đức</span>
-        </div>
-      </div>
-    </a>
-
-    <a href='#' class='bg-white card-item doctor'>
-      <div class='doctor-img'>
-        <img src='../../assets/images/doctors/doctor.png' alt='doctor'>
-      </div>
-      <div class='p-4'>
-        <h4>Bs.Nguyễn Thanh Tùng</h4>
-        <div class='text-muted doctor-info'>
-          <i class="doctor-info-icon fas fa-venus-mars"></i>
-          <span>Nam</span>
-        </div>
-
-        <div class='text-muted doctor-info'>
-          <i class="doctor-info-icon fas fa-user-md"></i>
-          <span>Phó giáo sư, tiến sĩ</span>
-        </div>
-
-        <div class='text-muted doctor-info'>
-          <i class="doctor-info-icon fas fa-clinic-medical"></i>
-          <span>Tiêu hoá</span>
-        </div>
-
-        <div class='text-muted doctor-info'>
-          <i class="doctor-info-icon fas fa-map-marker-alt"></i>
-          <span>Bệnh viện Việt Đức</span>
+          <span>{{doctor.hospital}}</span>
         </div>
       </div>
     </a>
@@ -175,6 +35,6 @@
   </div> 
 
   <div class='more'>
-    <a href='#'>Xem thêm >></a>
+    <a [routerLink]="['/doctors']">Xem thêm >></a>
   </div>
 </section>

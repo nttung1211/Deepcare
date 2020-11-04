@@ -1,8 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
+import { DataService } from '../shared/data.service';
 import { HelpersService } from '../shared/helpers.service';
-import { ServiceService } from './service.service';
+import { Size } from '../shared/Size.enum';
+import { Service } from './Service.model';
+
 
 @Component({
   selector: 'app-services',
@@ -11,10 +14,10 @@ import { ServiceService } from './service.service';
 })
 export class ServicesComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
-  private _services = [];
+  services = [];
 
   constructor(
-    private serviceService: ServiceService,
+    private dataService: DataService<Service>,
     private spinner: NgxSpinnerService,
     private helpers: HelpersService
     ) {
@@ -22,30 +25,22 @@ export class ServicesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    if (!this.serviceService.services.length) {
+    if (!this.dataService.data.services.length) {
       this.spinner.show();
-      this.subscription = this.serviceService.getALlServices().subscribe((services) => {
-        services = services.map(ser => {
-          ser.description = this.helpers.shortenString(ser.description, 200);
-          return ser;
+      this.dataService.table = 'services';
+      this.subscription = this.dataService.all().subscribe((services) => {
+        services = services.map(service => {
+          service.content = this.helpers.shortenString(service.content, 200);
+          service.image.url = this.helpers.getRelevantSize(service.image, Size.Small);
+          return service;
         });
-        this.serviceService.services = services;
-        this.services = this.serviceService.services;
+        this.dataService.data.services = services;
+        this.services = this.dataService.data.services;
         this.spinner.hide();
       });
     } else {
-      this.services = this.serviceService.services;
+      this.services = this.dataService.data.services;
     }
-  }
-
-
-  // GETTERS AND SETTERS
-  set services(posts: any[]) {
-    this._services = posts;
-  }
-
-  get services() {
-    return this._services;
   }
 
   ngOnDestroy() {

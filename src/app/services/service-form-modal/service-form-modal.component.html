@@ -1,12 +1,12 @@
 <div class='container'>
   <i class="fas fa-times" (click)="toggleFormModal()"></i>
-  <h1 class="text-center py-3">{{title}}</h1>
+  <h1 class="text-center py-4 title-color">{{title}}</h1>
   <div class='row'>
     <div class='col-12'>
       <form (ngSubmit)="onSubmit()" [formGroup]="serviceForm">
         <div class="form-group">
           <label for="fullname">Họ tên: </label>
-          <input class="form-control rounded-pill py-4" type="text" name="fullname" id="fullname"
+          <input placeholder="VD: Nguyễn Văn A" class="form-control rounded-pill py-4" type="text" name="fullname" id="fullname"
             formControlName="fullname"
           >
 
@@ -22,7 +22,7 @@
 
         <div class="form-group">
           <label for="phone">Số điện thoại: </label>
-          <input class="form-control rounded-pill py-4" type="tel" name="phone" id="phone"
+          <input placeholder="VD: 0987654321" class="form-control rounded-pill py-4" type="tel" name="phone" id="phone"
             formControlName="phone"
           >
 
@@ -38,12 +38,12 @@
 
         <div class="form-group">
           <label for="message">Lời nhắn: </label>
-          <textarea class="form-control rounded-pill px-4 py-2" type="text" name="message" id="message"
+          <textarea placeholder="VD: Gọi tôi lúc 2 giờ chiều" rows="3" class="form-control p-2" type="text" name="message" id="message"
             formControlName="message"
           ></textarea>
         </div>
 
-        <button class="btn btn-lg btn-primary btn-block">Đặt lịch</button>
+        <button class="btn btn-lg btn-primary btn-block mt-4">Đặt lịch</button>
 
       </form>
     </div>

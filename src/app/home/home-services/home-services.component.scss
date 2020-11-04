@@ -1,0 +1,52 @@
+@import '../../../shared-style/variables.scss';
+
+.home-services-section {
+  background: #fff;
+  margin: 0 0 30px 0;
+
+  .service {
+    text-align: center;
+    padding: 20px;
+
+    &:hover {
+
+      .service-icon {
+        i {
+          color: $colorAcentHover;
+        }
+      }
+      
+      .service-title {
+        color: $colorAcentHover;
+      }
+      
+      
+      .service-more {
+        color: $colorAcentHover;
+      }
+    }
+
+    .service-icon {
+      padding: 10px 0;
+
+      i {
+        font-size: 4rem;
+        color: $colorAcent;
+      }
+    }
+
+    .service-title {
+      color: $colorAcent;
+      margin: 20px 0;
+    }
+
+    .service-subtitle {
+      font-size: 1.1rem;
+      margin: 30px 0;
+    }
+
+    .service-more {
+      color: $colorAcent;
+    }
+  }
+}

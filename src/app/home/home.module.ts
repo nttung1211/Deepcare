@@ -7,6 +7,7 @@ import { HomePartnersComponent } from './home-partners/home-partners.component';
 import { HomeDoctorsComponent } from './home-doctors/home-doctors.component';
 import { HomeLandingComponent } from './home-landing/home-landing.component';
 import { HomeNewsComponent } from './home-news/home-news.component';
+import { HomeServicesComponent } from './home-services/home-services.component';
 
 
 
@@ -17,7 +18,8 @@ import { HomeNewsComponent } from './home-news/home-news.component';
     HomeFeaturesComponent,
     HomeDoctorsComponent,
     HomeNewsComponent,
-    HomePartnersComponent
+    HomePartnersComponent,
+    HomeServicesComponent
   ],
   imports: [
     SharedModule,

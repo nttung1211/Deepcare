@@ -1,0 +1,59 @@
+.flash {
+  &.alert-success {
+    p {
+      color: #286534;
+    }
+  }
+
+  &.alert-warning {
+    p {
+      color: #A2863D;
+    }
+  }
+
+  padding: 20px;
+  width: 90vw;
+
+  .alert-heading {
+    margin-bottom: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .flash {
+    padding: 30px;
+    width: 500px;
+  
+    .alert-heading {
+      margin-bottom: 10px;
+      font-size: 3rem;
+    }
+  
+    p {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+}

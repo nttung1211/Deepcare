@@ -1,0 +1,79 @@
+<div *ngIf="doctor" class='container doctor-container'>
+  <h1 class="title">Thông tin bác sỹ</h1>
+
+  <div class='row'>
+    <div class='col-lg-6'>
+      <div class='image'>
+        <img [src]="doctor.image.url" alt='doctor image'>
+      </div>
+    </div>
+
+    <div class='col-lg-2'>
+      <div class="info"><span>Họ tên:</span></div>
+      <div class="info"><span>Giới tính:</span></div>
+      <div class="info"><span>Học vị:</span></div>
+      <div class="info"><span>Khoa:</span></div>
+      <div class="info"><span>Nơi công tác:</span></div>
+    </div>
+
+    <div class='col-lg-4'>
+      <div class="info">{{doctor.fullname}}</div>
+      <div class="info">{{doctor.gender}}</div>
+      <div class="info">{{doctor.qualifications}}</div>
+      <div class="info">{{doctor.faculty}}</div>
+      <div class="info">{{doctor.hospital}}</div>
+    </div>
+  </div>
+
+  <div class='row py-5'>
+    <div class='col'>
+      <div [innerHTML]="doctor.description | markdown" class=''></div>
+      <!-- the tag <markdown> does not work properly -->
+    </div>
+  </div>
+  
+</div>
+
+
+<div class='container'>
+  <h1 class="text-center py-5 title-color">Những bác sĩ nổi bật khác</h1>
+  <div class='row'>
+    <div class='col-md-4 py-3 doctors' *ngFor="let doctor of relatedDoctors">
+      
+      <a [routerLink]="['..', doctor.id]" class='bg-white card-item doctor'>
+        <div class='doctor-img'>
+          <img src='../../assets/images/doctors/doctor.png' alt='doctor'>
+        </div>
+        <div class='p-4'>
+          <h4>Dr.{{doctor.fullname}}</h4>
+          <div class='text-muted doctor-info'>
+            <i class="doctor-info-icon fas fa-venus-mars"></i>
+            <span>{{doctor.gender}}</span>
+          </div>
+  
+          <div class='text-muted doctor-info'>
+            <i class="doctor-info-icon fas fa-user-md"></i>
+            <span>{{doctor.qualifications}}</span>
+          </div>
+  
+          <div class='text-muted doctor-info'>
+            <i class="doctor-info-icon fas fa-clinic-medical"></i>
+            <span>{{doctor.faculty}}</span>
+          </div>
+  
+          <div class='text-muted doctor-info'>
+            <i class="doctor-info-icon fas fa-map-marker-alt"></i>
+            <span>{{doctor.hospital}}</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <p class="more py-4"><a [routerLink]="['..']">Xem thêm >></a></p>
+</div>
+
+
+
+<ngx-spinner></ngx-spinner>

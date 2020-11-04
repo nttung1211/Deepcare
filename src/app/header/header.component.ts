@@ -1,9 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { Subscription } from 'rxjs';
 import { FormModalService } from '../services/form-modal.service';
-import { ServiceService } from '../services/service.service';
-import { Post, PostService } from '../shared/post.service';
 import { SidebarService } from './sidebar.service';
 
 @Component({
@@ -14,15 +10,10 @@ import { SidebarService } from './sidebar.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   navOpen = false;
   @Input() services = [];
-  introPosts: Post[] = [];
-  private serviceSubscription: Subscription;
-  private introSubscription: Subscription;
+  @Input() introPosts = [];
 
   constructor(
     private formModalService: FormModalService,
-    private serviceService: ServiceService,
-    private spinner: NgxSpinnerService,
-    private postService: PostService,
     private sidebarService: SidebarService
   ) { }
 
@@ -35,20 +26,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    // subcribe sidebar closing
     this.sidebarService.sidebarClosed.subscribe(
       () => {
         this.closeNav();
       }
     );
 
-
-    this.spinner.show();
-    this.introSubscription = this.postService.find('tags.name=gioithieu').subscribe(
-      (posts: Post[]) => {
-        this.introPosts = posts;
-        this.spinner.hide();
-      }
-    );
   }
 
   toggleFormModal() {
@@ -59,8 +43,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.serviceSubscription.unsubscribe();
-    this.introSubscription.unsubscribe();
   }
 
 }

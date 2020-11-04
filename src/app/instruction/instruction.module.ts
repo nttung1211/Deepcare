@@ -4,13 +4,17 @@ import { InstructionRoutingModule } from './instruction-routing.module';
 import { QnaComponent } from './qna/qna.component';
 import { FeaturesComponent } from './features/features.component';
 import { InstructionComponent } from './instruction.component';
+import { FeatureDetailComponent } from './features/feature-detail/feature-detail.component';
+import { QnaDetailComponent } from './qna/qna-detail/qna-detail.component';
 
 
 @NgModule({
   declarations: [
     InstructionComponent,
     FeaturesComponent,
-    QnaComponent
+    QnaComponent,
+    FeatureDetailComponent,
+    QnaDetailComponent
   ],
   imports: [
     SharedModule,

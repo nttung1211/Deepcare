@@ -1,0 +1,43 @@
+@import '../../../shared-style/variables.scss';
+@import '../doctors.component.scss';
+
+.doctor-container { 
+  line-height: 2rem;
+  
+  .title {
+    color: $colorTitle;
+    font-size: 3.5rem;
+    margin: 40px 0;
+    text-align: center;
+  }
+
+  .info {
+    margin-bottom: 10px;
+    text-transform: capitalize;
+
+    span {
+      color: $colorTitle;
+      display: block;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .doctor-container { 
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .doctor-container {
+    padding: 0 15%;  
+  }
+}
+
+@media (min-width: 1200px) {
+  .doctor-container {
+    padding: 0 10%;  
+  }
+}
+
+

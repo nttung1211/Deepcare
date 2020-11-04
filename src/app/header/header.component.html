@@ -15,7 +15,7 @@
 
       <div class='lower-nav'>
         <div class='navi-item'>
-          <a class='page home' routerLink='/' [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">
+          <a class='page home' routerLink='/home' [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">
             Trang chủ
           </a>
         </div>
@@ -37,7 +37,7 @@
           <a routerLinkActive="active" [routerLink]="['/partners']" class='page'>đối tác</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" [routerLink]="['/partners/companies']">Đơn vị nổi bật</a>
-            <a class="dropdown-item" [routerLink]="['/partners/doctors']">Bác sĩ nổi bật</a>
+            <a class="dropdown-item" [routerLink]="['/doctors']">Bác sĩ nổi bật</a>
           </div>
         </div>
         <div class='navi-item'><a routerLinkActive="active" class='page' [routerLink]="['/news']">tin tức</a></div>

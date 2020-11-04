@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { DoctorsRoutingModule } from './doctors-routing.module';
 import { DoctorsComponent } from './doctors.component';
+import { SharedModule } from '../shared/shared.module';
+import { DoctorDetailComponent } from './doctor-detail/doctor-detail.component';
 
 
 @NgModule({
-  declarations: [DoctorsComponent],
+  declarations: [DoctorsComponent, DoctorDetailComponent],
   imports: [
-    CommonModule,
+    SharedModule,
     DoctorsRoutingModule
   ]
 })

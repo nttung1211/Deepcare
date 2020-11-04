@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Post } from './post.service';
-import { Size } from './Size';
+import { Injectable } from '@angular/core'
+import { Image } from './Image.model';
+import { Size } from './Size.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -20,24 +20,24 @@ export class HelpersService {
     return str;
   }
 
-  getRelevantSize(post: Post, size: Size): string {
+  getRelevantSize(image: Image, size: Size): string {
     const url = 
-      typeof(post.image.formats.large) === 'object' && 
+      typeof(image.formats.large) === 'object' && 
       ![Size.Medium, Size.Small, Size.Thumbnail].includes(size) ?
-      post.image.formats.large.url : 
+      image.formats.large.url : 
 
-      typeof(post.image.formats.medium) === 'object' && 
+      typeof(image.formats.medium) === 'object' && 
       ![Size.Small, Size.Thumbnail].includes(size) ?
-      post.image.formats.medium.url :
+      image.formats.medium.url :
 
-      typeof(post.image.formats.small) === 'object' && 
+      typeof(image.formats.small) === 'object' && 
       ![Size.Thumbnail].includes(size) ?
-      post.image.formats.small.url :
+      image.formats.small.url :
 
-      typeof(post.image.formats.thumbnail) === 'object' ? 
-      post.image.formats.thumbnail.url :
+      typeof(image.formats.thumbnail) === 'object' ? 
+      image.formats.thumbnail.url :
 
-      post.image.url;
+      image.url;
 
     return url;
   }
