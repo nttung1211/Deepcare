@@ -1,58 +1,114 @@
-<nav class='bg-white'>
-  <div class='container'>
-    <i (click)='openNav()' class="fas fa-bars"></i>
-    <div class='navi-item'><a class='logo' routerLink='/'><img src='../../assets/images/logo/logo.png' alt='logo'></a>
-    </div>
-  </div>
-  <div class='navi-collapse' [ngClass]="{'show': navOpen}">
-    <div class='container'>
-      <i (click)='closeNav()' class="fas fa-times"></i>
-      <div class='upper-nav'>
-        <div class='navi-item' (click)="toggleFormModal()"><a class='btn btn-success text-capitalize d-block'>đặt lịch
-            khám</a></div>
-        <div class='navi-item'><a class='btn btn-primary text-capitalize d-block' appReachTo='.download-app-section'>Tải ứng dụng</a></div>
-      </div>
+<nav class="nav-bar">
+  <div class='container px-0'>
+    <div class='nav-bar__wrapper'>
+      <a>
+        <i (click)='openNav()' class="nav-bar__bars fas fa-bars"></i>
+      </a>
+      <a class='nav-bar__mobile-logo' *ngIf="!searchOpen" [routerLink]="['/home']">
+        <img src='../../assets/images/logo/logo.png' alt='logo'>
+      </a>
+      <a class='nav-bar__logo' [routerLink]="['/home']" appReachTo='.nav-bar-offset'>
+        <img src='../../assets/images/logo/logo.png' alt='logo'>
+      </a>
 
-      <div class='lower-nav'>
-        <div class='navi-item'>
-          <a class='page home' routerLink='/home' [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">
-            Trang chủ
+      <div *ngIf='!searchOpen' class='nav-bar__collapse' [ngClass]="{show: navOpen}">
+        
+        <div class='nav-bar__mobile-header'>
+          <a class='nav-bar__cross-wrapper'>
+            <i (click)='closeNav()' class="cross nav_bar__cross fas fa-times"></i>
+          </a>
+          <a class='nav-bar__logo' [routerLink]="['/home']">
+            <img src='../../assets/images/logo/logo.png' alt='logo'>
           </a>
         </div>
-        <div class='navi-item dropdown' appDropdown>
-          <a routerLinkActive="active" class='page' [routerLink]="['/services']">dịch vụ</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" *ngFor="let ser of services" [routerLink]="['/services', ser.id]">{{ser.title}}</a>
-          </div>
+
+        <ul class='nav-bar__menu'>
+          <li class="nav-bar__link-wrapper">
+            <a class='nav-bar__link' routerLinkActive='active' [routerLink]="['/home']">Trang chủ</a>
+          </li>
+          <li class="nav-bar__link-wrapper nav-bar__dropdown" routerLinkActive='active' appDropdown>
+            <a class='nav-bar__link nav-bar__toggle-dropdown'>
+              Dịch vụ
+              <i class="nav-bar__indicator fas fa-caret-down"></i>
+            </a>
+            <ul class="nav-bar__dropdown-menu">
+              <li class='nav-bar__dropdown-item' *ngFor="let service of services">
+                <a class='nav-bar__link nav-bar__link-child' routerLinkActive='active' [routerLink]="['/services', service.id]">{{service.title}}</a>
+              </li>
+              <li class='nav-bar__dropdown-item'>
+                <a class='nav-bar__link nav-bar__link-child' routerLinkActive='active' [routerLink]="['/services']" [routerLinkActiveOptions]="{exact: true}">Tất cả các dịch vụ</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-bar__link-wrapper nav-bar__dropdown" routerLinkActive='active' appDropdown>
+            <a class='nav-bar__link nav-bar__toggle-dropdown'>
+              Hướng dẫn
+              <i class="nav-bar__indicator fas fa-caret-down"></i>
+            </a>
+            <ul class="nav-bar__dropdown-menu">
+              <li class='nav-bar__dropdown-item'>
+                <a class='nav-bar__link nav-bar__link-child' routerLinkActive='active' [routerLink]="['/instruction', 'features']">Hương dẫn tính năng</a>
+              </li>
+              <li class='nav-bar__dropdown-item'>
+                <a class='nav-bar__link nav-bar__link-child' routerLinkActive='active' [routerLink]="['/instruction', 'qna']">Cấu hỏi thường gặp</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-bar__link-wrapper nav-bar__dropdown" routerLinkActive='active' appDropdown>
+            <a class='nav-bar__link nav-bar__toggle-dropdown'>
+              Đối tác
+              <i class="nav-bar__indicator fas fa-caret-down"></i>
+            </a>
+            <ul class="nav-bar__dropdown-menu">
+              <li class='nav-bar__dropdown-item'>
+                <a class='nav-bar__link nav-bar__link-child' routerLinkActive='active' [routerLink]="['/partners']">Đối tác nổi bật</a>
+              </li>
+              <li class='nav-bar__dropdown-item'>
+                <a class='nav-bar__link nav-bar__link-child' routerLinkActive='active' [routerLink]="['/doctors']">Bác sỹ nổi bật</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-bar__link-wrapper">
+            <a class='nav-bar__link' routerLinkActive='active' [routerLink]="['/news']">Tin tức</a>
+          </li>
+          <li class="nav-bar__link-wrapper nav-bar__dropdown" routerLinkActive='active' appDropdown>
+            <a class='nav-bar__link nav-bar__toggle-dropdown' [routerLink]="['/introduction']">
+              Giới thiệu
+              <i class="nav-bar__indicator fas fa-caret-down"></i>
+            </a>
+            <ul class="nav-bar__dropdown-menu">
+              <li class='nav-bar__dropdown-item' *ngFor="let introPost of introPosts">
+                <a class='nav-bar__link nav-bar__link-child' routerLinkActive='active' [routerLink]="['/introduction', introPost.id]">{{introPost.title}}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class='button-wrapper'>
+          <a class='button button-book' (click)="toggleFormModal(); closeNav()">Đăt lịch khám</a>
+          <a class='button button-download' (click)="closeNav()" appReachTo='.download-app-section'>Tải ứng dụng</a>
         </div>
-        <div class='navi-item'><a class='page' [routerLink]="['/products']">sản phẩm sức khoẻ</a></div>
-        <div class='navi-item dropdown' appDropdown>
-          <a routerLinkActive="active" [routerLink]="['/instruction']" class='page'>hướng dẫn</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" [routerLink]="['/instruction/features']">Hướng dẫn tính năng</a>
-            <a class="dropdown-item" [routerLink]="['/instruction/qna']">Câu hỏi thường gặp</a>
-          </div>
-        </div>
-        <div class='navi-item dropdown' appDropdown>
-          <a routerLinkActive="active" [routerLink]="['/partners']" class='page'>đối tác</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" [routerLink]="['/partners/companies']">Đơn vị nổi bật</a>
-            <a class="dropdown-item" [routerLink]="['/doctors']">Bác sĩ nổi bật</a>
-          </div>
-        </div>
-        <div class='navi-item'><a routerLinkActive="active" class='page' [routerLink]="['/news']">tin tức</a></div>
-        <div class='navi-item dropdown' appDropdown>
-          <a routerLinkActive="active" class='page' [routerLink]="['/introduction']">giới thiệu</a>
-          <div class="dropdown-menu">
-            <a *ngFor="let introPost of introPosts" class="dropdown-item" [routerLink]="['/introduction', introPost.id]">{{introPost.title}}</a>
-          </div>
-        </div>
-        <form class='search-bar navi-item'>
-          <input type='text' class='search-input form-control' placeholder='Tìm kiếm'>
-          <button class='search-btn'><i class="fas fa-search"></i></button>
+      </div>
+
+      <div class='search-bar'>
+        <form>
+          <input *ngIf="searchOpen" class='search-bar__input form-control' placeholder='Tìm kiếm' type='text'>
+          <a>
+            <i class="fas fa-search search-bar__icon" (click)='openSearch()' *ngIf="!searchOpen"></i>
+          </a>
+          <a>
+            <i class="search-bar__cross fas fa-times cross" *ngIf="searchOpen" (click)='closeSearch()'></i>
+          </a>
         </form>
       </div>
+
+      <a class='nav-bar__download-button-wrapper' appReachTo='.download-app-section'>
+        <span>Tải App</span>
+        <i class="nav-bar__download-button fas fa-download"></i>
+      </a>
+
     </div>
   </div>
 </nav>
-<div class='navbar-offset'></div>
+<div class='nav-bar-offset'></div>
+<app-overlay *ngIf="overlayOpen" (click)="closeNav()"></app-overlay>

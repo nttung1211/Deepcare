@@ -1,10 +1,13 @@
+@import '../../../shared-style/variables.scss';
+
 // Small devices (landscape phones, 576px and up)
 .landing-section {
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(14, 109, 156, 0.9)), to(rgba(20, 146, 208, .1))), url(../../../assets/images/landing/hero.jpg);
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  // background-attachment: scroll;
   color: #fff;
-  height: calc(90vh - 116px);
+  height: calc(var(--vh, 1vh) * 90 - 52px);
 
   .landing-text {
     margin: 20vh 0;
@@ -12,13 +15,13 @@
 
   .landing-title {
     color: #fff;
-    font-size: 3.3rem;
-    font-weight: bolder;
+    font-size: 2.9rem;
+    font-weight: 500;
   }
 
   .landing-btn {
     background: #fff;
-    color: #000;
+    color: $colorAcentDark;
   }
 }
 
@@ -26,7 +29,7 @@
   .landing-section {
 
     .landing-title {
-      font-size: 3.6rem;
+      font-size: 3.3rem;
     }
   }
 }
@@ -36,7 +39,7 @@
   .landing-section {
 
     .landing-title {
-      font-size: 3.9rem;
+      font-size: 3.7rem;
     }
   }
 }
@@ -46,7 +49,7 @@
   .landing-section {
 
     .landing-title {
-      font-size: 4.2rem;
+      font-size: 4.1rem;
     }
   }
 }

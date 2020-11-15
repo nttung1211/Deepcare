@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
-import { SidebarService } from './header/sidebar.service';
 import { Post } from './posts/Post.model';
 import { FormData, FormModalService } from './services/form-modal.service';
 import { Service } from './services/Service.model';
@@ -27,14 +26,13 @@ export class AppComponent implements OnInit, OnDestroy {
   flashMessage = '';
   flashType = '';
 
-  private formModalsubscription: Subscription;
+  private formModalSubscription: Subscription;
   private serviceSubscription: Subscription;
   private introSubscription: Subscription;
 
   constructor(
     private formModalService: FormModalService,
     private router: Router,
-    private sidebarService: SidebarService,
     private spinner: NgxSpinnerService,
     private introDataService: DataService<Post>,
     private servicesDataService: DataService<Service>,
@@ -45,12 +43,12 @@ export class AppComponent implements OnInit, OnDestroy {
     // close sibar on changing route
     this.router.events.subscribe(e => {
       if (e instanceof NavigationStart) {
-        this.sidebarService.sidebarClosed.next();
+        this.subjectsService.sidebarClosed.next();
       }
     });
 
     // subscribe form modal toggling
-    this.formModalsubscription = this.formModalService.formModalToggled.subscribe(
+    this.formModalSubscription = this.formModalService.formModalToggled.subscribe(
       (formData: FormData) => {
         if (formData) {
           this.formTitle = formData.title;
@@ -60,6 +58,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.modalOpen = !this.modalOpen;
       }
     );
+
 
     // subscribe flash
     this.subjectsService.flash.subscribe(
@@ -96,8 +95,14 @@ export class AppComponent implements OnInit, OnDestroy {
     );
   }
 
+  setVh() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+
+
   ngOnDestroy() {
-    this.formModalsubscription.unsubscribe();
+    this.formModalSubscription.unsubscribe();
     this.serviceSubscription.unsubscribe();
     this.introSubscription.unsubscribe();
   }

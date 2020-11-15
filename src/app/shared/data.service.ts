@@ -51,7 +51,7 @@ export class DataService<T> {
   }
   
   findOne(id: string): Observable<T> {
-    return this.http.get<T>(`${environment.apiHost}/${this.table}/${id}`);
+    return this.http.get<T>(`${environment.apiHost}/${this.table}/${id}`); 
   }
 }
 

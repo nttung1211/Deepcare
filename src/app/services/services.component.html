@@ -5,7 +5,7 @@
         <img [src]="ser.image.formats.small.url" class="card-img-top" alt="...">
         <div class="card-body">
           <h3 class="card-title">{{ser.title}}</h3>
-          <p class="card-text">{{ser.subtitle}}</p>
+          <p class="card-text">{{ser.subtitle | shorten:200}}</p>
           <a [routerLink]="[ser.id]" class="stretched-link">Đọc chi tiết >></a>
         </div>
       </div>
@@ -13,4 +13,4 @@
   </div>
 </div>
 
-<ngx-spinner></ngx-spinner>
+

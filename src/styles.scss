@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this le, and also import other style files */
 
 @import "./shared-style/variables";
 
@@ -8,10 +8,10 @@
 
 * {
   font-family: 'Roboto', sans-serif;
-  color: $colortext;
 }
 
 html {
+  color: $colortext;
   font-size: 15px;
 }
 
@@ -29,6 +29,7 @@ ul {
 }
 
 a {
+  cursor: pointer;
   color: unset;
 }
 
@@ -40,6 +41,14 @@ a:hover {
 img {
   width: 100%;
   object-fit: cover;
+}
+
+.fas, .fa {
+  color: $colorAcent;
+}
+
+.cross {
+  color: $colorAcent2;
 }
 
 .btn {
@@ -63,29 +72,16 @@ img {
   background: $colorAcentHover;
 }
 
-.dropdown.show .dropdown-menu {
-  display: block;
-  top: 95%;
-}
-
-.dropdown-menu {
-  padding: 10px 15px;
-  border-radius: 20px;
-}
-
-.dropdown-item {
-  border-bottom: 3px solid transparent;
-  padding: 5px;
-}
-
-.dropdown-item:hover {
-  border-bottom: 3px solid $colorAcent;
+.active {
   color: $colorAcent;
-  background: unset;
 }
 
 .hidden {
   opacity: 0;
+}
+
+.vanish {
+  display: none;
 }
 
 .card-item {
@@ -112,17 +108,17 @@ img {
   padding-bottom: 40px;
   text-align: center;
   font-size: 2.5rem;
-  font-weight: bold;
-  color: $colorTitle;
+  font-weight: 500;
+  color: $colorAcentDark;
 }
 
 .title-color {
-  color: $colorTitle;
+  color: $colorAcentDark;
 }
 
 @media (max-width: 1200px) {
   html {
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 

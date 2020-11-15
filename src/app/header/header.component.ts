@@ -1,6 +1,8 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Post } from '../posts/Post.model';
 import { FormModalService } from '../services/form-modal.service';
-import { SidebarService } from './sidebar.service';
+import { Service } from '../services/Service.model';
+import { SubjectsService } from '../shared/subjects.service';
 
 @Component({
   selector: 'app-header',
@@ -9,30 +11,58 @@ import { SidebarService } from './sidebar.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   navOpen = false;
-  @Input() services = [];
-  @Input() introPosts = [];
+  searchOpen = false;
+  overlayOpen = false;
+  @Input() services: Service[] = [];
+  @Input() introPosts: Post[] = [];
 
   constructor(
     private formModalService: FormModalService,
-    private sidebarService: SidebarService
+    private subjectsService: SubjectsService
   ) { }
+
+  ngOnInit(): void {
+    // subcribe sidebar closing
+    this.subjectsService.sidebarClosed.subscribe(
+      () => {
+        this.closeNav();
+        this.closeOverlay();
+      }
+    );
+
+    this.subjectsService.searchbarClosed.subscribe(
+      () => {
+        this.closeSearch();
+      }
+    );
+
+  }
 
   openNav(): void {
     this.navOpen = true;
+    this.openOverlay();
   }
 
   closeNav(): void {
     this.navOpen = false;
+    this.closeOverlay();
   }
 
-  ngOnInit(): void {
-    // subcribe sidebar closing
-    this.sidebarService.sidebarClosed.subscribe(
-      () => {
-        this.closeNav();
-      }
-    );
+  openSearch(): void {
+    this.searchOpen = true;
+  }
 
+  closeSearch(): void {
+    this.searchOpen = false;
+  }
+
+  openOverlay(): void {
+    this.overlayOpen = true;
+  }
+
+  closeOverlay(): void {
+    this.overlayOpen = false;
+    this.navOpen = false;
   }
 
   toggleFormModal() {

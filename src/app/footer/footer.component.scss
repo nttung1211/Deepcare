@@ -5,9 +5,10 @@ footer {
   letter-spacing: 1px;
 
   .title {
-    font-weight: bold;
+    font-weight: 400;
     position: relative;
     margin-bottom: 30px;
+    color: $colorAcentDark;
 
     &:not(.social-title)::after {
       content: '';

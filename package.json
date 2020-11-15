@@ -20,6 +20,8 @@
     "@angular/platform-browser-dynamic": "~9.0.5",
     "@angular/router": "~9.0.5",
     "@fortawesome/fontawesome-free": "^5.15.1",
+    "@ngrx/effects": "^10.0.1",
+    "@ngrx/store": "^10.0.1",
     "animate.css": "^4.1.1",
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",

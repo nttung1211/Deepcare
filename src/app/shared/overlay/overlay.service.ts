@@ -4,9 +4,8 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class SidebarService {
-  sidebarClosed = new Subject();
+export class OverlayService {
+  overlayShow = new Subject();
 
   constructor() { }
-
 }

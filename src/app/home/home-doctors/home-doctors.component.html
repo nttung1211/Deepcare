@@ -1,8 +1,8 @@
 <section class='doctors-section pb-5'>
   <h2 class="section-title">ĐỘI NGŨ BÁC SỸ CỦA DEEPCARE</h2>
   <div class='doctors'>
-    <i class="fas fa-chevron-left" (click)="slide()"></i>
-    <i class="fas fa-chevron-right" (click)="slide(false)"></i>
+    <i *ngIf="doctors.length > 2" class="fas fa-chevron-left" (click)="slide()"></i>
+    <i *ngIf="doctors.length > 2" class="fas fa-chevron-right" (click)="slide(false)"></i>
 
     <a *ngFor="let doctor of doctors" class='bg-white card-item doctor' [routerLink]="['/doctors', doctor.id]">
       <div class='doctor-img'>

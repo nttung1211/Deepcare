@@ -11,17 +11,24 @@ import { PostDetailComponent } from '../posts/post-detail/post-detail.component'
 import { RouterModule } from '@angular/router';
 import { ReachToDirective } from './reach-to.directive';
 import { FlashComponent } from './flash/flash.component';
+import { OverlayComponent } from './overlay/overlay.component';
+import { ShortenPipe } from './shorten.pipe';
 
 
 
 @NgModule({
   declarations: [
+    // DIRECTIVES
     DropdownDirective,
     RevealAnimateDirective,
+    ReachToDirective,
+    // COMPONENTS
     PostsComponent,
     PostDetailComponent,
-    ReachToDirective,
-    FlashComponent
+    FlashComponent,
+    OverlayComponent,
+    // PIPES
+    ShortenPipe
   ],
   imports: [
     RouterModule,
@@ -37,6 +44,7 @@ import { FlashComponent } from './flash/flash.component';
     PostsComponent,
     PostDetailComponent,
     FlashComponent,
+    OverlayComponent,
     // MODULES
     CommonModule,
     MarkdownModule,
@@ -47,7 +55,9 @@ import { FlashComponent } from './flash/flash.component';
     // DIRECTIVEES
     DropdownDirective,
     RevealAnimateDirective,
-    ReachToDirective
+    ReachToDirective,
+    // PIPES
+    ShortenPipe
   ]
 })
 export class SharedModule {}

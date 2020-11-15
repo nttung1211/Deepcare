@@ -1,79 +1,57 @@
 @import "../../shared-style/variables";
 
 
+.doctors {
+
+  .doctor {
+    .doctor-img {
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .doctor-info {
+      padding: 5px 0;
+
+      .doctor-info-icon {
+        color: $colorAcent;
+        font-size: 1.2rem;
+        width: 30px;
+        display: inline-block;
+      }
+    }
+
+  }
+}
+
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
   .doctors {
-    display: flex;
-    padding-bottom: 30px;
-    overflow-x: scroll;
-  
-    .fa-chevron-left,
-    .fa-chevron-right {
-      display: block;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 5rem;
-      color: $colorAcent;
-      opacity: .3;
-      margin: 10px;
-      cursor: pointer;
-  
-      &:hover {
-        opacity: 1;
-      } 
-    }
-  
-    .fa-chevron-left {
-      left: 0;
-    }
-  
-    .fa-chevron-right {
-      right: 0;
-    }
-  
-    &::-webkit-scrollbar {
-      display: none;
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-  
     .doctor {
-      display: block;
-      margin: 10px;
-      transition: .3s;
-  
       .doctor-img {
-        overflow: hidden;
-        width: 350px;
-        height: 300px;
+
       }
-  
-      .doctor-info {
-        padding: 5px 0;
-  
-        .doctor-info-icon {
-          color: $colorAcent;
-          font-size: 1.2rem;
-          // margin-right: 10px;
-          width: 30px;
-          display: inline-block;
-        }
-      }
-  
     }
   }
+}
 
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .doctors {
+    .doctor {
+      .doctor-img {
 
-
-
-@media (max-width: 991.98px) {
-  .doctor-img {
-    width: 280px !important;
-    height: 220px !important;
+      }
+    }
   }
+}
 
-  .fa-chevron-right,
-  .fa-chevron-left {
-    display: none !important;
-  }
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
 }

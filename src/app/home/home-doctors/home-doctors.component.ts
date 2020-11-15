@@ -18,13 +18,11 @@ export class HomeDoctorsComponent implements OnInit, OnDestroy {
 
   constructor(
     private dataService: DataService<Doctor>,
-    private spinner: NgxSpinnerService,
     private helpers: HelpersService
   ) { }
 
   ngOnInit(): void {
     if (!this.dataService.data.doctors.length) {
-      this.spinner.show();
       this.dataService.table = 'doctors';
       this.dataService.all().subscribe(
         (doctors: Doctor[]) => {
@@ -34,7 +32,6 @@ export class HomeDoctorsComponent implements OnInit, OnDestroy {
           });
           this.dataService.data.doctors = doctors;
           this.doctors = this.dataService.data.doctors;
-          this.spinner.hide();
         }
       );
     } else {

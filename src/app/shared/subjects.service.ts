@@ -6,6 +6,9 @@ import { Subject } from 'rxjs';
 })
 export class SubjectsService {
   flash = new Subject<Flash>();
+
+  sidebarClosed = new Subject();
+  searchbarClosed = new Subject();
 }
 
 export class Flash {

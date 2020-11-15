@@ -30,7 +30,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
       this.dataService.table = 'services';
       this.subscription = this.dataService.all().subscribe((services) => {
         services = services.map(service => {
-          service.content = this.helpers.shortenString(service.content, 200);
+          // service.content = this.helpers.shortenString(service.content, 200);
           service.image.url = this.helpers.getRelevantSize(service.image, Size.Small);
           return service;
         });
