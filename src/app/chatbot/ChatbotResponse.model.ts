@@ -1,6 +1,6 @@
 export class ChatbotResponse { 
   constructor(
-    public question: string,
+    public questions: string[],
     public type: number ,
     public options?: ChatbotOption[]
   ) {}
@@ -12,7 +12,7 @@ export class ChatbotOption {
 }
 
 export class ChatbotResponseRaw {
-  text: string; 
+  text: string[]; 
   options?: string[]; 
   type: number 
 }

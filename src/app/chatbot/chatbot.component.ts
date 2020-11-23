@@ -71,7 +71,9 @@ export class ChatbotComponent implements OnInit, AfterViewChecked {
     this.isTyping = true;
     this.chatbotService.converse(answer).pipe(delay(1000)).subscribe(
       (res: ChatbotResponse) => {
-        this.chatbotService.update(new ChatMessage(res.question, 'bot'));
+        for (const question of res.questions) {
+          this.chatbotService.update(new ChatMessage(question, 'bot'));
+        }
         this.type = res.type;
 
         switch (res.type) {
