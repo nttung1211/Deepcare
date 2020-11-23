@@ -10,6 +10,8 @@ import { SharedModule } from './shared/shared.module';
 import { ServiceFormModalComponent } from './services/service-form-modal/service-form-modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DownloadAppComponent } from './download-app/download-app.component';
+import { ChatbotComponent } from './chatbot/chatbot.component';
+import { IsTyppingComponent } from './chatbot/is-typping/is-typping.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { DownloadAppComponent } from './download-app/download-app.component';
     DownloadAppComponent,
     FooterComponent,
     ErrorPageComponent,
-    ServiceFormModalComponent
+    ServiceFormModalComponent,
+    ChatbotComponent,
+    IsTyppingComponent
   ],
   imports: [
     AppRoutingModule,

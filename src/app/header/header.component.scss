@@ -144,31 +144,6 @@
         }
       }
 
-      .button-wrapper {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        display: flex;
-        width: 100%;
-
-        .button {
-          display: block;
-          border: none;
-          color: #fff;
-          flex: 1;
-          padding: 15px 20px;
-
-          &.button-book {
-            background: $colorAcent2;
-          }
-
-          &.button-download {
-            background: $colorAcent;
-          }
-        }
-
-      }
-
     }
 
 
@@ -236,8 +211,6 @@
 }
 
 
-
-
 // ******************************************************************************************
 // ******************************************************************************************
 // ******************************************************************************************
@@ -250,7 +223,7 @@
 // ******************************************************************************************
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-  .navbar-offset {
+  .nav-bar-offset {
     padding: 34px;
   }
 

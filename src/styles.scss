@@ -43,6 +43,10 @@ img {
   object-fit: cover;
 }
 
+textarea:focus, input:focus{
+  outline: none;
+}
+
 .fas, .fa {
   color: $colorAcent;
 }
@@ -70,6 +74,35 @@ img {
 
 .btn.btn-primary:hover {
   background: $colorAcentHover;
+}
+
+.button-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+
+  .button {
+    text-align: center;
+    display: block;
+    border: none;
+    color: #fff;
+    flex: 1;
+    padding: 15px 20px;
+
+    &:disabled {
+      filter: contrast(50%);
+    }
+  }
+}
+
+.bg-acent {
+  background: $colorAcent;
+}
+
+.bg-acent2 {
+  background: $colorAcent2;
 }
 
 .active {

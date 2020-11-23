@@ -1,0 +1,45 @@
+<div [ngClass]="{'open': isOpen}" class='chatbot__container'>
+  <div class='chatbot__header'>
+    <h5 class="chatbot__title">Virtual Assistants</h5>
+    <i class='fas fa-times chatbot__close-btn' (click)="isOpen = false"></i>
+  </div>
+
+  <div class='chatbot__dialog-box' #dialogBox>
+    <div class='chatbot__message-wrapper' *ngFor="let message of messages">
+      <div class='bot-icon'>
+        <img *ngIf="message.sentBy === 'bot'" src='../../assets/images/icons/Daisa Dev.png' alt='bot icon'>
+      </div>
+      <div class='chatbot__message' [ngClass]="{'bot-message': message.sentBy === 'bot',
+                                                'user-message': message.sentBy === 'user'}">
+        {{message.content}}
+      </div>
+    </div>
+
+    <div class='chatbot__message-wrapper' *ngFor="let option of options; let i = index">
+      <label class='chatbot__message bot-message chatbot__option' [ngClass]="{'option-selected': option.isChecked}">
+        {{option.text}} <i class="fas fa-check"></i>
+        <input class='chatbot__checkbox' type='checkbox' [(ngModel)]="option.isChecked" (change)="changeSelection()">
+      </label>
+    </div>
+
+    <app-is-typping *ngIf="isTyping"></app-is-typping>
+  </div>
+
+  <div class='button-wrapper' *ngIf="type === 2">
+    <button [disabled]="isTyping" class='button bg-acent2' (click)="yesNoInput = 'không'; onAnswer()">Không</button>
+    <button [disabled]="isTyping" class='button bg-acent' (click)="yesNoInput = 'có'; onAnswer()">Có</button>
+  </div>
+
+  <div class='button-wrapper' *ngIf="type === 3">
+    <button [disabled]="isTyping" class='button bg-acent2' (click)="onAnswer(true)">khác</button>
+    <button class='button bg-acent' [disabled]="isTyping || choices.length === 0" (click)="onAnswer()">Tiếp tục</button>
+  </div>
+
+  <div class='text-input-wrapper' *ngIf="type === 1 || type === -1">
+    <input [disabled]="isTyping" [type]="type === 1 ? 'text' : 'number'" class='text-input' placeholder="Nhập câu trả lời" (keyup.enter)="onAnswer()" [(ngModel)]="textInput" autocomplete="off">
+  </div>
+</div>
+
+<a class='chatbot__icon' (click)="isOpen = true">
+  <img src='../../assets/images/icons/Chat Web.svg' alt='chatbot icon'>
+</a>
