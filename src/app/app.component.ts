@@ -16,7 +16,7 @@ import { Flash, SubjectsService } from './shared/subjects.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'Deepcare';
-  modalOpen = true;
+  // modalOpen = true;
   formTitle: string;
   formServiceId: string;
   services: Service[] = [];
@@ -48,16 +48,21 @@ export class AppComponent implements OnInit, OnDestroy {
     });
 
     // subscribe form modal toggling
-    this.formModalSubscription = this.formModalService.formModalToggled.subscribe(
-      (formData: FormData) => {
-        if (formData) {
-          this.formTitle = formData.title;
-          this.formServiceId = formData.serviceId;
-        }
+    // this.formModalSubscription = this.formModalService.formModalToggled.subscribe(
+    //   (formData: FormData) => {
+    //     if (formData) {
+    //       this.formTitle = formData.title;
+    //       this.formServiceId = formData.serviceId;
+    //       console.log(this.formTitle);
+    //     } else {
+    //       this.formTitle = 'Khám tại bệnh viện hoặc phòng khám',
+    //       this.formServiceId = '5f9922d4f4a9ebe8efbb1311';
+    //       console.log(this.formTitle);
+    //     }
 
-        this.modalOpen = !this.modalOpen;
-      }
-    );
+    //     this.modalOpen = !this.modalOpen;
+    //   }
+    // );
 
 
     // subscribe flash

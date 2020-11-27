@@ -66,10 +66,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   toggleFormModal() {
-    this.formModalService.formModalToggled.next({
-      title: "Khám tại bệnh viện hoặc phòng khám",
-      serviceId: "5f9922d4f4a9ebe8efbb1311"
-    });
+    this.formModalService.formModalToggled.next(null);
   }
 
   ngOnDestroy() {

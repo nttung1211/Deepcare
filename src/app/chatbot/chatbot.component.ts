@@ -1,8 +1,14 @@
 import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { delay, scan } from 'rxjs/operators';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { FormModalService } from '../services/form-modal.service';
+import { AppState } from '../store/app.reducers';
 import { ChatbotService } from './chatbot.service';
-import { ChatbotOption, ChatbotResponse } from './ChatbotResponse.model';
+import { ChatbotOption, ChatbotResponse, Disease } from './ChatbotResponse.model';
 import { ChatMessage } from './ChatMessage.model';
+import * as chatbotActions from './store/chatbot.actions';
+import * as chatbotSelectors from './store/chatbot.selectors';
 
 @Component({
   selector: 'app-chatbot',
@@ -11,92 +17,73 @@ import { ChatMessage } from './ChatMessage.model';
 })
 export class ChatbotComponent implements OnInit, AfterViewChecked {
   isOpen = false;
+  multipleChoiceInput: string[] = [];
+  
   type = 1;
-  textInput = '';
-  yesNoInput = '';
   options: ChatbotOption[] = [];
-  choices: string[] = [];
+  diseases: Disease[] = [];
   messages: ChatMessage[];
+  conversation: Observable<ChatMessage[]>;
+
   isTyping = false;
-  // TODO : generate token
-  token: string;
   @ViewChild('dialogBox') dialogBox: ElementRef;
 
   constructor(
-    private chatbotService: ChatbotService
+    private chatbotService: ChatbotService,
+    private formModalService: FormModalService,
+    private store: Store<AppState>
   ) { }
 
   ngOnInit(): void {
-    this.onAnswer(false, true);
-    
-    this.chatbotService.conversation.pipe(
-      scan((messages, message) => [...messages, message], [])
-    ).subscribe(
-      messages => {
-        this.messages = messages;
-      }
+    this.onAnswer();
+    this.conversation = this.store.pipe(
+      select(chatbotSelectors.conversationSelector),
+      tap(
+        () => {
+          setTimeout(() => {
+            this.scrollDown();
+          });
+        }
+      )
     );
   }
 
-  onAnswer(skip: boolean = false, initial: boolean = false) {
-    switch (this.type) {
-      case -1:
-      case 1:
-        if (this.textInput || initial) {
-          this.sendMessage(`${this.textInput}`);
-          this.textInput = '';
-        }
-        break;
-
-      case 2:
-        this.sendMessage(this.yesNoInput);
-        this.yesNoInput = '';
-        break;
-      
-      case 3:
-        if (skip) this.choices = [];
-        this.sendMessage(this.choices);
-        this.choices = [];
-        break;
-    }
+  onAnswer(skip: boolean = false) {
+    if (skip) this.multipleChoiceInput = [];
+    this.sendMessage(this.multipleChoiceInput);
+    this.multipleChoiceInput = [];
   }
 
 
-  sendMessage(answer: string | string[]) {
+  sendMessage(answer: string[]) {
     setTimeout(() => {
       this.scrollDown();
     });
 
     this.options = [];
     this.isTyping = true;
-    this.chatbotService.converse(answer).pipe(delay(1000)).subscribe(
+    this.chatbotService.converse(answer).subscribe(
       (res: ChatbotResponse) => {
-        for (const question of res.questions) {
-          this.chatbotService.update(new ChatMessage(question, 'bot'));
+        for (const message of res.messages) {
+          this.store.dispatch(chatbotActions.pushMessage({
+            message: new ChatMessage(message, 'bot')
+          }));
         }
+
         this.type = res.type;
-
-        switch (res.type) {
-          case 3:
-            this.options = res.options;
-            break;
-        }
-
-        setTimeout(() => {
-          this.scrollDown();
-        });
-
+        this.options = res.options;
+        this.diseases = res.diseases;
         this.isTyping = false;
       }
     );
   }
 
   changeSelection() {
-    this.choices = this.options.reduce((choices, option) => {
+    this.multipleChoiceInput = this.options.reduce((multipleChoiceInput, option) => {
       if (option.isChecked) {
-        choices.push(option.text);
+        multipleChoiceInput.push(option.text);
       }
-      return choices;
+      return multipleChoiceInput;
     }, []);
   }
 
@@ -105,6 +92,19 @@ export class ChatbotComponent implements OnInit, AfterViewChecked {
       top: this.dialogBox.nativeElement.scrollHeight,
       behavior: 'smooth'
     });
+  }
+
+  refresh() {
+    this.diseases = [];
+    this.options = [];
+    this.chatbotService.refreshSender_id();
+    this.onAnswer();
+    this.store.dispatch(chatbotActions.clearConversation());
+  }
+
+  toggleFormModal() {
+    this.formModalService.formModalToggled.next(null);
+    this.isOpen = false;
   }
 
   ngAfterViewChecked() {

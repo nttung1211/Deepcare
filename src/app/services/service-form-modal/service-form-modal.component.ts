@@ -12,6 +12,7 @@ import { FormData, FormModalService } from '../form-modal.service';
   styleUrls: ['./service-form-modal.component.scss']
 })
 export class ServiceFormModalComponent implements OnInit, OnDestroy {
+  isOpen = true;
   title: string;
   serviceId: string;
   serviceForm: FormGroup;
@@ -29,7 +30,12 @@ export class ServiceFormModalComponent implements OnInit, OnDestroy {
         if (formData) {
           this.serviceId = formData.serviceId;
           this.title = formData.title;
+        } else {
+          this.title = 'Khám tại bệnh viện hoặc phòng khám',
+          this.serviceId = '5f9922d4f4a9ebe8efbb1311';
         }
+
+        this.isOpen = !this.isOpen;
       }
     );
     this.initForm();

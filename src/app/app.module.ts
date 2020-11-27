@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DownloadAppComponent } from './download-app/download-app.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
 import { IsTyppingComponent } from './chatbot/is-typping/is-typping.component';
+import { StoreModule } from '@ngrx/store';
+import { appReducersMap } from './store/app.reducers';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { IsTyppingComponent } from './chatbot/is-typping/is-typping.component';
     BrowserModule,
     HttpClientModule,
     SharedModule,
-    BrowserAnimationsModule // only once
+    BrowserAnimationsModule, // only once
+    StoreModule.forRoot(appReducersMap)
   ],
   providers: [],
   bootstrap: [AppComponent]

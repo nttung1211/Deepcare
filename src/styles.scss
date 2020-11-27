@@ -93,6 +93,13 @@ textarea:focus, input:focus{
 
     &:disabled {
       filter: contrast(50%);
+      &:hover {
+        filter: contrast(50%);
+      }
+    }
+
+    &:hover {
+      filter: brightness(1.1);
     }
   }
 }
